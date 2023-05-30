@@ -1,4 +1,4 @@
-import { setVar, computedProps } from "./directives/utils";
+import { setVar, computedProps, setDirective } from "./directives/utils";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const directions = new Map([
@@ -92,15 +92,5 @@ export default defineNuxtPlugin((nuxtApp) => {
     return computedProps(classes, vars);
   }
 
-  nuxtApp.vueApp.directive("lay", {
-    mounted(el, binding) {
-      lay(binding, el);
-    },
-    updated(el, binding) {
-      lay(binding, el);
-    },
-    getSSRProps(binding) {
-      return lay(binding);
-    },
-  });
+  setDirective(nuxtApp.vueApp, "lay", lay);
 });
