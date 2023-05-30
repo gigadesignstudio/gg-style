@@ -1,0 +1,145 @@
+.wrapper {
+  --w-width: initial;
+  --w-pad: initial;
+
+  width: calc(var(--vw) * 100);
+  margin-left: calc(50% - var(--vw) * 50);
+
+  & > * {
+    --w-pad: inherit;
+
+    margin: 0 auto;
+    max-width: var(--w-width);
+    padding: 0 var(--w-pad);
+
+    > * {
+      --w-pad: initial;
+    }
+  }
+}
+
+.spacer {
+  --s-top: var(--spacer-s);
+  --s-right: var(--spacer-s);
+  --s-bottom: var(--spacer-s);
+  --s-left: var(--spacer-s);
+
+  margin: var(--s-top) var(--s-right) var(--s-bottom) var(--s-left);
+}
+
+.padder {
+  --p-top: var(--spacer-s);
+  --p-right: var(--spacer-s);
+  --p-bottom: var(--spacer-s);
+  --p-left: var(--spacer-s);
+
+  padding: var(--p-top) var(--p-right) var(--p-bottom) var(--p-left);
+}
+
+.layout {
+  --l-gap: 0;
+  --l-dir: initial;
+  --l-overlap: inherit;
+  --l-align: initial;
+  --l-justify: initial;
+  --l-auto: minmax(0, 1fr);
+
+  display: grid;
+  grid-auto-flow: var(--l-dir);
+  grid-auto-columns: var(--l-auto);
+  grid-auto-rows: minmax(0, auto);
+  justify-content: var(--l-justify);
+  justify-items: var(--l-justify);
+  align-content: var(--l-align);
+  align-items: var(--l-align);
+  gap: var(--l-gap);
+
+  > * {
+    grid-area: var(--l-overlap);
+
+    > * {
+      --l-overlap: initial;
+    }
+  }
+}
+
+.overlap {
+  display: grid;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.grid {
+  --g-col-gap: 0;
+  --g-row-gap: 0;
+  --g-min: 0;
+  --g-cols: 4;
+  --g-align: initial;
+  --g-justify: initial;
+
+  display: grid;
+  grid-template-columns: repeat(var(--g-cols), minmax(var(--g-min), 1fr));
+  column-gap: var(--g-col-gap);
+  row-gap: var(--g-row-gap);
+  align-content: var(--g-align);
+  align-items: var(--g-align);
+  justify-content: var(--g-justify);
+  justify-items: var(--g-justify);
+}
+
+.cols {
+  --c-cols: initial;
+
+  grid-column: var(--c-cols);
+}
+
+.self {
+  --s-align: initial;
+  --s-justify: initial;
+
+  align-self: var(--s-align);
+  justify-self: var(--s-justify);
+}
+
+.ratio-container {
+  --r-width: 1;
+  --r-height: 1;
+
+  height: 0;
+  overflow: hidden;
+  padding-top: calc(var(--r-height) / var(--r-width) * 100%);
+  position: relative;
+
+  .ratio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ratio {
+  --r-width: 1;
+  --r-height: 1;
+  --r-fit: cover;
+
+  aspect-ratio: var(--r-width) / var(--r-height);
+  object-fit: var(--r-fit);
+}
+
+.accordion {
+  --a-speed: 0.2s;
+  --a-height: 0px;
+
+  .trigger {
+    cursor: pointer;
+  }
+  .content {
+    height: var(--a-height);
+    overflow-y: hidden;
+    transition: height var(--a-speed);
+  }
+}
