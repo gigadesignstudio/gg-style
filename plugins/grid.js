@@ -1,5 +1,3 @@
-import { setVar, computedProps, setDirective } from "./directives/utils";
-
 export default defineNuxtPlugin((nuxtApp) => {
   const distributions = new Map([
     ["start", "start"],
@@ -11,69 +9,67 @@ export default defineNuxtPlugin((nuxtApp) => {
   ]);
 
   function grid(binding, el = false) {
-    const bindingValue = binding.value;
-
     let classes = ["grid"];
     let vars = {};
 
-    if (!bindingValue) {
-      el?.classList?.add(classes.join(", "));
+    if (!binding) {
+      el?.classList?.add(...classes);
       return;
     }
 
-    if (Array.isArray(bindingValue)) {
-      setVar(vars, "g-cols", bindingValue[0]);
-      setVar(vars, "g-gap", "gap", bindingValue[1]);
-    } else if (typeof bindingValue === "object") {
-      if (bindingValue.cols) {
-        setVar(vars, "g-cols", bindingValue.cols);
+    if (Array.isArray(binding)) {
+      addVar(vars, "g-cols", binding[0]);
+      addVar(vars, "g-gap", "gap", binding[1]);
+    } else if (typeof binding === "object") {
+      if (binding.cols) {
+        addVar(vars, "g-cols", binding.cols);
       }
 
-      if (bindingValue.min) {
-        setVar(vars, "g-cols", "auto-fill");
-        const min = bindingValue.min;
+      if (binding.min) {
+        addVar(vars, "g-cols", "auto-fill");
+        const min = binding.min;
         if (Array.isArray(min)) {
-          setVar(vars, "g-min", min[0]);
+          addVar(vars, "g-min", min[0]);
           if (min[1]) {
-            setVar(vars, "g-cols", "auto-fit");
+            addVar(vars, "g-cols", "auto-fit");
           }
-        } else setVar(vars, "g-min", bindingValue.min);
+        } else addVar(vars, "g-min", binding.min);
       }
 
-      const gap = bindingValue.gap;
+      const gap = binding.gap;
       if (gap) {
         if (Array.isArray(gap)) {
-          setVar(vars, "g-row-gap", "gap", gap[0]);
-          setVar(vars, "g-col-gap", "gap", gap[1]);
+          addVar(vars, "g-row-gap", "gap", gap[0]);
+          addVar(vars, "g-col-gap", "gap", gap[1]);
         } else {
-          setVar(vars, "g-col-gap", "gap", gap);
-          setVar(vars, "g-row-gap", "gap", gap);
+          addVar(vars, "g-col-gap", "gap", gap);
+          addVar(vars, "g-row-gap", "gap", gap);
         }
       }
 
-      const align = bindingValue.align;
+      const align = binding.align;
       if (align) {
         if (Array.isArray(align)) {
-          setVar(vars, "g-align", distributions.get(align[0]));
-          setVar(vars, "g-justify", distributions.get(align[1]));
+          addVar(vars, "g-align", distributions.get(align[0]));
+          addVar(vars, "g-justify", distributions.get(align[1]));
         } else {
-          setVar(vars, "g-align", distributions.get(align));
-          setVar(vars, "g-justify", distributions.get(align));
+          addVar(vars, "g-align", distributions.get(align));
+          addVar(vars, "g-justify", distributions.get(align));
         }
       }
-    } else setVar(vars, "g-cols", bindingValue);
+    } else addVar(vars, "g-cols", binding);
 
     if (el) {
-      if (bindingValue?.enabled === false) {
-        el.classList.remove(classes.join(", "));
+      if (binding?.enabled === false) {
+        el.classList.remove(...classes);
         Object.keys(vars).forEach((k) => el.style.removeProperty(k));
       } else {
-        el.classList.add(classes.join(", "));
+        el.classList.add(...classes);
         Object.entries(vars).forEach(([k, v]) => el.style.setProperty(k, v));
       }
     }
 
-    if (bindingValue?.enabled === false) {
+    if (binding?.enabled === false) {
       return;
     }
 
@@ -81,31 +77,29 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   function cols(binding, el = false) {
-    const bindingValue = binding.value;
-
     let classes = ["cols"];
     let vars = {};
 
-    if (!bindingValue) {
-      el?.classList?.add(classes.join(", "));
+    if (!binding) {
+      el?.classList?.add(...classes);
       return;
     }
 
     const computed = (value) =>
       typeof value === "number" ? `span ${value}` : value;
 
-    if (Array.isArray(bindingValue)) {
-      setVar(
+    if (Array.isArray(binding)) {
+      addVar(
         vars,
         "c-cols",
-        `${computed(bindingValue[0])} / ${computed(bindingValue[1])}`
+        `${computed(binding[0])} / ${computed(binding[1])}`
       );
     } else {
-      setVar(vars, "c-cols", computed(bindingValue));
+      addVar(vars, "c-cols", computed(binding));
     }
 
     if (el) {
-      el.classList.add(classes.join(", "));
+      el.classList.add(...classes);
       Object.entries(vars).forEach(([k, v]) => el.style.setProperty(k, v));
     }
 
@@ -113,21 +107,19 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   function self(binding, el = false) {
-    const bindingValue = binding.value;
-
     let classes = ["self"];
     let vars = {};
 
-    if (Array.isArray(bindingValue)) {
-      setVar(vars, "s-align", distributions.get(bindingValue[0]));
-      setVar(vars, "s-justify", distributions.get(bindingValue[1]));
+    if (Array.isArray(binding)) {
+      addVar(vars, "s-align", distributions.get(binding[0]));
+      addVar(vars, "s-justify", distributions.get(binding[1]));
     } else {
-      setVar(vars, "s-align", distributions.get(bindingValue));
-      setVar(vars, "s-justify", distributions.get(bindingValue));
+      addVar(vars, "s-align", distributions.get(binding));
+      addVar(vars, "s-justify", distributions.get(binding));
     }
 
     if (el) {
-      el.classList.add(classes.join(", "));
+      el.classList.add(...classes);
       Object.entries(vars).forEach(([k, v]) => el.style.setProperty(k, v));
     }
 

@@ -1,37 +1,17 @@
-.wrapper {
-  --w-width: initial;
-  --w-pad: initial;
-
-  width: calc(var(--vw) * 100);
-  margin-left: calc(50% - var(--vw) * 50);
-
-  & > * {
-    --w-pad: inherit;
-
-    margin: 0 auto;
-    max-width: var(--w-width);
-    padding: 0 var(--w-pad);
-
-    > * {
-      --w-pad: initial;
-    }
-  }
-}
-
 .spacer {
-  --s-top: var(--spacer-s);
-  --s-right: var(--spacer-s);
-  --s-bottom: var(--spacer-s);
-  --s-left: var(--spacer-s);
+  --s-top: 0;
+  --s-right: 0;
+  --s-bottom: 0;
+  --s-left: 0;
 
   margin: var(--s-top) var(--s-right) var(--s-bottom) var(--s-left);
 }
 
 .padder {
-  --p-top: var(--spacer-s);
-  --p-right: var(--spacer-s);
-  --p-bottom: var(--spacer-s);
-  --p-left: var(--spacer-s);
+  --p-top: 0;
+  --p-right: 0;
+  --p-bottom: 0;
+  --p-left: 0;
 
   padding: var(--p-top) var(--p-right) var(--p-bottom) var(--p-left);
 }

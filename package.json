@@ -9,11 +9,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@types/node": "^18",
-    "nuxt": "^3.5.2"
+    "@types/node": "^20",
+    "nuxt": "^3.5.3"
   },
   "dependencies": {
+    "@csstools/postcss-global-data": "^1.0.3",
+    "normalize.css": "^8.0.1",
+    "postcss-gg-tokens": "^0.0.12",
     "postcss-nested": "^6.0.1",
-    "postcss-preset-env": "^8.4.1"
+    "postcss-preset-env": "^8.5.1"
   }
 }

@@ -1,5 +1,3 @@
-import { setVar, computedProps, setDirective } from "./directives/utils";
-
 export default defineNuxtPlugin((nuxtApp) => {
   const directions = new Map([
     ["h", "column"],
@@ -16,67 +14,65 @@ export default defineNuxtPlugin((nuxtApp) => {
   ]);
 
   function lay(binding, el = false) {
-    const bindingValue = binding.value;
-
     let classes = ["layout"];
     let vars = {};
 
-    if (!bindingValue) {
+    if (!binding) {
       el?.classList?.add(classes.join(", "));
       return;
     }
 
-    setVar(vars, "l-auto", "minmax(0, 1fr)");
+    addVar(vars, "l-auto", "minmax(0, 1fr)");
 
-    if (Array.isArray(bindingValue)) {
-      setVar(vars, "l-dir", directions.get(bindingValue[0]));
-      setVar(vars, "l-gap", "gap", bindingValue[1]);
-    } else if (typeof bindingValue === "object") {
-      if (bindingValue.gap) {
-        setVar(vars, "l-gap", "gap", bindingValue.gap);
+    if (Array.isArray(binding)) {
+      addVar(vars, "l-dir", directions.get(binding[0]));
+      addVar(vars, "l-gap", "gap", binding[1]);
+    } else if (typeof binding === "object") {
+      if (binding.gap) {
+        addVar(vars, "l-gap", "gap", binding.gap);
       }
 
-      if (bindingValue.dir) {
-        if (bindingValue.dir === "o") {
+      if (binding.dir) {
+        if (binding.dir === "o") {
           classes.push("overlap");
         } else {
           classes.filter((c) => c !== "overlap");
-          setVar(vars, "l-dir", directions.get(bindingValue.dir));
+          addVar(vars, "l-dir", directions.get(binding.dir));
         }
       }
 
-      if (bindingValue.fluid) {
-        setVar(vars, "l-auto", "initial");
+      if (binding.fluid) {
+        addVar(vars, "l-auto", "initial");
       }
 
-      const align = bindingValue.align;
+      const align = binding.align;
       if (align) {
         if (Array.isArray(align)) {
           if (align[0]) {
-            setVar(vars, "l-align", distributions.get(align[0]));
+            addVar(vars, "l-align", distributions.get(align[0]));
           }
           if (align[1]) {
-            setVar(vars, "l-justify", distributions.get(align[1]));
+            addVar(vars, "l-justify", distributions.get(align[1]));
           }
           if (align.includes("even")) {
-            setVar(vars, "l-auto", "initial");
+            addVar(vars, "l-auto", "initial");
           }
         } else {
           if (align === "even") {
-            setVar(vars, "l-auto", "initial");
+            addVar(vars, "l-auto", "initial");
           }
-          setVar(vars, "l-align", distributions.get(align));
-          setVar(vars, "l-justify", distributions.get(align));
+          addVar(vars, "l-align", distributions.get(align));
+          addVar(vars, "l-justify", distributions.get(align));
         }
       }
-    } else if (bindingValue === "o") {
+    } else if (binding === "o") {
       classes.push("overlap");
     } else {
-      setVar(vars, "l-dir", directions.get(bindingValue));
+      addVar(vars, "l-dir", directions.get(binding));
     }
 
     if (el) {
-      if (bindingValue?.enabled === false) {
+      if (binding?.enabled === false) {
         el.classList.remove(classes.join(", "));
         Object.keys(vars).forEach((k) => el.style.removeProperty(k));
       } else {
@@ -85,7 +81,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
     }
 
-    if (bindingValue?.enabled === false) {
+    if (binding?.enabled === false) {
       return;
     }
 
