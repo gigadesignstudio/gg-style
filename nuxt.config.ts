@@ -1,12 +1,14 @@
-import { createResolver } from '@nuxt/kit';
 import tokens from './assets/css/tokens.json';
 
-const { resolve } = createResolver(import.meta.url);
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const currentDir = dirname(fileURLToPath(import.meta.url));
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  alias: { '@gg-style': resolve('./') },
-  css: [resolve('./assets/css/index.css')],
+  alias: { '@gg-style': join(currentDir, './') },
+  css: [join(currentDir, './assets/css/index.css')],
   postcss: {
     plugins: {
       'postcss-gg-tokens': {
