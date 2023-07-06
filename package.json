@@ -1,6 +1,13 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "gg-style",
+  "type": "module",
+  "main": "./nuxt.config.ts",
+  "files": [
+    "nuxt.config.ts",
+    "assets",
+    "plugins",
+    "utils"
+  ],
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
