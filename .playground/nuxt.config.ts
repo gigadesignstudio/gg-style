@@ -7,6 +7,13 @@ export default defineNuxtConfig({
       "postcss-gg-tokens": {
         tokens,
       },
+      'postcss-preset-env': {
+        stage: 0,
+        features: {
+          'nesting-rules': false,
+        },
+      },
+      'postcss-nested': {},
     },
   },
 });
