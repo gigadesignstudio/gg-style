@@ -9,11 +9,11 @@
     "utils"
   ],
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "nuxt build .playground",
+    "dev": "nuxt dev .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "postinstall": "nuxt prepare .playground"
   },
   "devDependencies": {
     "@types/node": "^20",
