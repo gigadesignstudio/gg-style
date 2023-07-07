@@ -4,7 +4,7 @@ import { dirname, join } from 'path';
 const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
-  css: [join(currentDir, './assets/css/index.css')],
+  css: ['normalize.css', join(currentDir, './assets/css/index.css')],
   postcss: {
     plugins: {
       'postcss-preset-env': {
