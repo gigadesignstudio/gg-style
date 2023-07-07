@@ -32,8 +32,6 @@ setTimeout(() => {
 </template>
 
 <style lang="postcss">
-@import 'normalize.css';
-
 div {
   height: 200px;
 
