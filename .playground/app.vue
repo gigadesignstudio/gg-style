@@ -31,7 +31,7 @@ setTimeout(() => {
   </section>
 </template>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 @import 'normalize.css';
 
 div {
