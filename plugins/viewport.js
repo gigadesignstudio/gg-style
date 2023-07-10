@@ -10,7 +10,7 @@ function setMq(mq, breakpoints) {
   return mq;
 }
 
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
   const mq = ref(
     Object.keys(tokens.breakpoint).reduce((reducer, key) => {
       return {
@@ -20,7 +20,7 @@ export default defineNuxtPlugin(() => {
     }, {})
   );
 
-  onNuxtReady(() => {
+  nuxtApp.hook("app:mounted", () => {
     setMq(mq, tokens.breakpoint);
     window.onresize = () => {
       setMq(mq, tokens.breakpoint);
