@@ -13,20 +13,24 @@ function setMq(mq, breakpoints) {
 }
 
 export default defineNuxtPlugin(() => {
-  const mq = ref(Object.keys(tokens.breakpoint).reduce((reducer, key) => {
-    return {
-      ...reducer,
-      [key]: false,
-    };
-  }, {}));
+  const mq = ref({});
 
   onNuxtReady(() => {
-    setMq(mq, tokens.breakpoint)
-    window.onresize = () => {
+    if (process.client) {
       setMq(mq, tokens.breakpoint)
-    };
-
-    document.body.classList.add('loaded');
+      window.onresize = () => {
+        setMq(mq, tokens.breakpoint)
+      };
+  
+      document.body.classList.add('loaded');
+    } else {
+      mq.value = Object.keys(tokens.breakpoint).reduce((reducer, key) => {
+        return {
+          ...reducer,
+          [key]: false,
+        };
+      }, {})
+    }
   });
 
   return {
