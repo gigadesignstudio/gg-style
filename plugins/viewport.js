@@ -4,7 +4,6 @@ import tokens from "../assets/css/tokens.json";
 
 export default defineNuxtPlugin(() => {
   onNuxtReady(() => {
-    viewport(tokens.breakpoint);
     document.body.classList.add('loaded');
   });
 

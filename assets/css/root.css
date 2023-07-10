@@ -1,3 +1,12 @@
 :root {
   @gg-tokens;
+
+  --dvh: 1vh;
+  --svh: 1vh;
+  @supports (height: 1dvh) {
+    --dvh: 1dvh;
+  }
+  @supports (height: 1svh) {
+    --svh: 1svh;
+  }
 }
