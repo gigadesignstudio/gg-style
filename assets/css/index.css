@@ -1,3 +1,8 @@
 
 @import './root';
 @import './directives';
+
+
+body:not(.loaded) {
+  visibility: hidden;
+}
