@@ -19,7 +19,7 @@ setTimeout(() => {
       <div />
     </div>
   </section>
-  <section v-lay="{ dir: 'h', align: ['center'], enabled: true }" :style="{ background: 'blue' }">
+  <section v-lay="{ dir: 'h', align: ['center'], enabled: true, gap: 'm' }" :style="{ background: 'blue' }">
     <div v-for="n in 8" :style="{ background: `rgb(1${n}0, 1${n}0, 1${n}0)`, height: `${n}00px` }" />
   </section>
   <section v-visible="true" v-lay="{ dir: 'h', align: ['center', 'even'], fluid: true }">

@@ -26,10 +26,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     if (Array.isArray(binding)) {
       addVar(vars, "l-dir", directions.get(binding[0]));
-      addVar(vars, "l-gap", "gap", binding[1]);
+      addVar(vars, "l-gap", "space", binding[1]);
     } else if (typeof binding === "object") {
       if (binding.gap) {
-        addVar(vars, "l-gap", "gap", binding.gap);
+        addVar(vars, "l-gap", "space", binding.gap);
       }
 
       if (binding.dir) {

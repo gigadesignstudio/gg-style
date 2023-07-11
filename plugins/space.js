@@ -10,11 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   ]);
 
   function setSpacingVariables(type, vars, key, value) {
-    spacingVariations
-      .get(key)
-      .forEach((variation) =>
-        addVar(vars, `${type.charAt(0)}-${variation}`, "spacer", value)
-      );
+    spacingVariations.get(key).forEach((variation) => addVar(vars, `${type.charAt(0)}-${variation}`, "space", value));
   }
 
   function spacingDirective(type, binding, el) {
@@ -41,9 +37,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         setSpacingVariables(type, vars, "left", binding[3]);
       }
     } else if (typeof binding === "object") {
-      Object.entries(binding).forEach(([k, v]) =>
-        setSpacingVariables(type, vars, k, v)
-      );
+      Object.entries(binding).forEach(([k, v]) => setSpacingVariables(type, vars, k, v));
     } else setSpacingVariables(type, vars, "all", binding);
 
     if (el) {

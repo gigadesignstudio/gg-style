@@ -19,7 +19,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     if (Array.isArray(binding)) {
       addVar(vars, "g-cols", binding[0]);
-      addVar(vars, "g-gap", "gap", binding[1]);
+      addVar(vars, "g-gap", "space", binding[1]);
     } else if (typeof binding === "object") {
       if (binding.cols) {
         addVar(vars, "g-cols", binding.cols);
@@ -39,11 +39,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       const gap = binding.gap;
       if (gap) {
         if (Array.isArray(gap)) {
-          addVar(vars, "g-row-gap", "gap", gap[0]);
-          addVar(vars, "g-col-gap", "gap", gap[1]);
+          addVar(vars, "g-row-gap", "space", gap[0]);
+          addVar(vars, "g-col-gap", "space", gap[1]);
         } else {
-          addVar(vars, "g-col-gap", "gap", gap);
-          addVar(vars, "g-row-gap", "gap", gap);
+          addVar(vars, "g-col-gap", "space", gap);
+          addVar(vars, "g-row-gap", "space", gap);
         }
       }
 
@@ -85,15 +85,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       return;
     }
 
-    const computed = (value) =>
-      typeof value === "number" ? `span ${value}` : value;
+    const computed = (value) => (typeof value === "number" ? `span ${value}` : value);
 
     if (Array.isArray(binding)) {
-      addVar(
-        vars,
-        "c-cols",
-        `${computed(binding[0])} / ${computed(binding[1])}`
-      );
+      addVar(vars, "c-cols", `${computed(binding[0])} / ${computed(binding[1])}`);
     } else {
       addVar(vars, "c-cols", computed(binding));
     }
