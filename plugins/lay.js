@@ -73,10 +73,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     if (el) {
       if (binding?.enabled === false) {
-        el.classList.remove(classes.join(","));
+        el.classList.remove(...classes);
         Object.keys(vars).forEach((k) => el.style.removeProperty(k));
       } else {
-        el.classList.add(classes.join(","));
+        el.classList.add(...classes);
         Object.entries(vars).forEach(([k, v]) => el.style.setProperty(k, v));
       }
     }
