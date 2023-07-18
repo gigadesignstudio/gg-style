@@ -1,4 +1,4 @@
-import tokens from "../assets/css/tokens.json";
+import tokens from "@/assets/css/tokens.json";
 
 function setMq(mq, breakpoints) {
   const breakpointsKeys = Object.keys(breakpoints);
