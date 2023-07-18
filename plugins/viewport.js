@@ -9,7 +9,7 @@ function setMq(mq, breakpoints) {
 }
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-  const tokens = await import("@/assets/css/tokens.json");
+  const tokens = await import("../assets/css/tokens.json");
 
   const mq = ref(
     Object.keys(tokens.breakpoint).reduce((reducer, key) => {
