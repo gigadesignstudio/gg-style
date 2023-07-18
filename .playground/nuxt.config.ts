@@ -1,19 +1,19 @@
-import tokens from "../assets/css/tokens.json";
+import tokens from "./assets/css/tokens.json";
 
 export default defineNuxtConfig({
-  extends: '..',
+  extends: "..",
   postcss: {
     plugins: {
       "postcss-gg-tokens": {
         tokens,
       },
-      'postcss-preset-env': {
+      "postcss-preset-env": {
         stage: 0,
         features: {
-          'nesting-rules': false,
+          "nesting-rules": false,
         },
       },
-      'postcss-nested': {},
+      "postcss-nested": {},
     },
   },
 });
