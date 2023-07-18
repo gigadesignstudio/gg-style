@@ -1,5 +1,3 @@
-import tokens from "@/assets/css/tokens.json";
-
 function setMq(mq, breakpoints) {
   const breakpointsKeys = Object.keys(breakpoints);
 
@@ -10,7 +8,11 @@ function setMq(mq, breakpoints) {
   return mq;
 }
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
+  const tokens = await import("../assets/css/tokens.json");
+
+  console.log(tokens);
+
   const mq = ref(
     Object.keys(tokens.breakpoint).reduce((reducer, key) => {
       return {
