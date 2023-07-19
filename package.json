@@ -3,10 +3,7 @@
   "type": "module",
   "main": "./nuxt.config.ts",
   "files": [
-    "nuxt.config.ts",
-    "assets",
-    "plugins",
-    "utils"
+    "assets"
   ],
   "scripts": {
     "build": "nuxt build .playground",
