@@ -7,7 +7,7 @@ setTimeout(() => {
 </script>
 
 <template>
-  <section v-accordion="{ group: 'group', enabled: false }">
+  <section v-accordion="{ group: 'group', enabled: false }" v-show="$mq.m">
     <div :style="{ background: 'pink' }" />
     <div :style="{ background: 'purple' }">
       <div />
