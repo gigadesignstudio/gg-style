@@ -17,11 +17,11 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "nuxt": "^3.6.3",
-    "@vueuse/core": "^10.2.1",
-    "@vueuse/nuxt": "^10.2.1"
+    "nuxt": "^3.6.3"
   },
   "dependencies": {
+    "@vueuse/core": "^10.2.1",
+    "@vueuse/nuxt": "^10.2.1",
     "@csstools/postcss-global-data": "^2.0.0",
     "normalize.css": "^8.0.1",
     "postcss-gg-tokens": "^0.0.12",
