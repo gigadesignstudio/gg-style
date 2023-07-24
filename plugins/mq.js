@@ -1,8 +1,13 @@
 export default defineNuxtPlugin((nuxtApp) => {
   const mq = useMq();
-  nuxtApp.hook("app:mounted", () => {
-    document.body.classList.add("loaded");
+  watchEffect(() => {
+    if (process.client) {
+      nextTick(() => {
+        document.body.classList.add("loaded");
+      });
+    }
   });
+
   return {
     provide: {
       mq,
