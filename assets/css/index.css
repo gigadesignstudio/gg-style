@@ -4,4 +4,8 @@
 
 body:not(.loaded) {
   visibility: hidden;
+
+  * {
+    visibility: hidden;
+  }
 }
