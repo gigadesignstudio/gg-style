@@ -1,10 +1,8 @@
 {
-  "name": "gg-style",
+  "name": "@gigadesignstudio/gg-style",
+  "version": "0.0.4",
   "type": "module",
   "main": "./nuxt.config.ts",
-  "files": [
-    "assets"
-  ],
   "scripts": {
     "build": "nuxt build .playground",
     "dev": "nuxt dev .playground",
@@ -14,14 +12,25 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "nuxt": "^3.6.3"
+    "nuxt": "^3.6.5"
   },
   "dependencies": {
     "@vueuse/core": "^10.2.1",
-    "@csstools/postcss-global-data": "^2.0.0",
+    "@csstools/postcss-global-data": "^2.0.1",
     "normalize.css": "^8.0.1",
     "postcss-gg-tokens": "^0.0.12",
     "postcss-nested": "^6.0.1",
-    "postcss-preset-env": "^9.0.0"
-  }
+    "postcss-preset-env": "^9.1.0"
+  },
+  "description": "Giga — Style",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gigadesignstudio/gg-style.git"
+  },
+  "author": "Giga Design Studio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gigadesignstudio/gg-style/issues"
+  },
+  "homepage": "https://github.com/gigadesignstudio/gg-style#readme"
 }
