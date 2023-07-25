@@ -1,4 +1,4 @@
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   const mq = useMq();
   watchEffect(() => {
     if (process.client) {

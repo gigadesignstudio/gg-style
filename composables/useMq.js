@@ -1,5 +1,6 @@
 import tokens from "@/assets/css/tokens.json";
 import { createSharedComposable, useMediaQuery } from "@vueuse/core";
+
 export const useMq = createSharedComposable(() => {
   const breakpoints = tokens.breakpoint;
   if (breakpoints) {

@@ -1,7 +1,6 @@
-
-@import './root';
-@import './directives';
-
+@import "normalize.css";
+@import "./root";
+@import "./directives";
 
 body:not(.loaded) {
   visibility: hidden;
