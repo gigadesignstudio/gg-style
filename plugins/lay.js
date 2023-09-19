@@ -77,6 +77,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         el.classList.remove(...classes);
         Object.keys(vars).forEach((k) => el.style.removeProperty(k));
       } else {
+        el.classList.remove("overlap");
         el.classList.add(...classes);
         Object.entries(vars).forEach(([k, v]) => el.style.setProperty(k, v));
       }
