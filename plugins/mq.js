@@ -2,19 +2,19 @@ import { watchOnce } from "@vueuse/core";
 
 export default defineNuxtPlugin(() => {
   const mq = useMq();
-  watchOnce(
-    mq,
-    (v) => {
-      if (process.client && Object.values(v).length) {
-        nextTick(() => {
+  onNuxtReady(() => {
+    watchOnce(
+      mq,
+      (v) => {
+        if (process.client) {
           document.body.classList.add("loaded");
-        });
+        }
+      },
+      {
+        immediate: true,
       }
-    },
-    {
-      immediate: true,
-    }
-  );
+    );
+  });
 
   return {
     provide: {

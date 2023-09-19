@@ -68,6 +68,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     } else if (binding === "o") {
       classes.push("overlap");
     } else {
+      classes.filter((c) => c !== "overlap");
       addVar(vars, "l-dir", directions.get(binding));
     }
 
