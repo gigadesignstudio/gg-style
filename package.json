@@ -18,7 +18,7 @@
     "@vueuse/core": "^10.2.1",
     "@csstools/postcss-global-data": "^2.0.1",
     "normalize.css": "^8.0.1",
-    "postcss-gg-tokens": "^0.0.12",
+    "postcss-gg-tokens": "^0.0.13",
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.1.0"
   },
