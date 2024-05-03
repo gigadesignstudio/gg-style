@@ -43,7 +43,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         Object.keys(vars).forEach((k) => ref.style.removeProperty(k));
       } else {
         el.classList.add(...classes);
-        Object.entries(vars).forEach(([k, v]) => el.style.setProperty(k, v));
+        Object.entries(vars).forEach(([k, v]) => ref.style.setProperty(k, v));
       }
     }
 
