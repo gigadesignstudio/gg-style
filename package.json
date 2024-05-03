@@ -1,6 +1,6 @@
 {
   "name": "@gigadesignstudio/gg-style",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "type": "module",
   "main": "./nuxt.config.ts",
   "scripts": {
